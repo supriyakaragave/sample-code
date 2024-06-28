@@ -1,47 +1,26 @@
-package org.stellantis.quicklop.api;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.http.HttpComponent;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.model.dataformat.JsonLibrary;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.cookie.BasicClientCookie;
 import org.springframework.stereotype.Component;
-import org.stellantis.quicklop.model.ql.QuickLop;
-import org.stellantis.quicklop.model.sf.SFLopResponse;
-import org.stellantis.quicklop.model.sf.SFSchemaRequest;
-import org.stellantis.quicklop.processor.LopDetailResponseProcessor;
-import org.stellantis.quicklop.processor.LopListResponseProcessor;
-import org.stellantis.quicklop.processor.LopSearchResponseProcessor;
-import org.stellantis.quicklop.processor.RequestProcessor;
-
-import org.apache.commons.httpclient.HttpState;
-import org.apache.commons.httpclient.methods.GetMethod;
 
 import javax.ws.rs.HttpMethod;
 import javax.ws.rs.core.MediaType;
 
 
-import java.util.Arrays;
-
-import static org.stellantis.quicklop.config.Constants.*;
-
 @Component
-public class QuickLopRoute extends BaseRouteBuilder {
+public class CamelCookieCodeRoute extends RouteBuilder {
     @Override
-    public void doConfigure() {
+    public void configure() {
 
         // Configure HTTP Component
         HttpComponent httpComponent = getContext().getComponent("http", HttpComponent.class);
@@ -134,4 +113,6 @@ public class QuickLopRoute extends BaseRouteBuilder {
                 .process(new LopSearchResponseProcessor()).endChoice()
                 .end();
     }
+
+
 }
