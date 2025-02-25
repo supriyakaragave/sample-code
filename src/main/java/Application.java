@@ -1,3 +1,4 @@
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,18 +11,26 @@ public class Application {
 
 
     public static void main(String[] args) {
-       // SpringApplication.run(VehicleInformationUpdateApplication.class,args);
 
 
-        final ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        String input ="ABSCD";
+        char[]  ipArray =   input.toCharArray();
+        int j = 0;
+        int k = ipArray.length;
+        char[]  revArray = new char[]{} ;
+        for (char i : ipArray){
 
-        final AtomicInteger counter = new AtomicInteger(0);
+            revArray[k-1] = ipArray[j];
+            j++;
+            k--;
+            if (j > ipArray.length || k <0){
+                return;
+            }
+        }
 
-        Arrays.asList(context.getBeanDefinitionNames())
-                .forEach(beanName -> {
-                    System.out.println("{}) Bean Name: {} "+ counter.incrementAndGet() + "\t" + beanName);
-                });
+       if( revArray.toString().equals(input)){
 
+       }
     }
 
 

@@ -1,9 +1,11 @@
 
 
 
+/*
 @Component
+*/
 public class VehWarningMsgProcessor{
-
+/*
     Vehicle sfVehicle = new Vehicle();
         vipVehWarningMsgs.stream()
             .filter(warningMsg -> warningMsg.getValue().toUpperCase().contains("Rapid Response Transmittals"))
@@ -14,6 +16,6 @@ public class VehWarningMsgProcessor{
         vipVehWarningMsgs.stream()
             .filter(warningMsg -> warningMsg.getValue().toUpperCase().contains("Rapid Response Transmittals"))
             .forEach(warningMsg -> sfVehicle.getVehWarningMsg()
-            .add(warningMsg.getValue()));
+            .add(warningMsg.getValue()));*/
 
 }
